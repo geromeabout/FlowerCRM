@@ -1,6 +1,6 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">Flower CRM</a>
+        <a class="navbar-brand" href="">FlowerCRM preview</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,28 +15,28 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="categories">
-                <span class="oi oi-plus" aria-hidden="true"></span> Categories
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
             <NavLink class="nav-link" href="products">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Products
+                <span class="oi oi-list-rich" aria-hidden="true"></span> View Products
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="vendors">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Vendors
+            <NavLink class="nav-link" href="productdetails">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Product Details
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="employees">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Employees
+            <NavLink class="nav-link" href="addproduct">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Add Product
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="sales">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Sales
+            <NavLink class="nav-link" href="categories">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Categories
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="addcategory">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Add Category
             </NavLink>
         </div>
     </nav>
@@ -45,7 +45,7 @@
 @code {
     private bool collapseNavMenu = true;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {

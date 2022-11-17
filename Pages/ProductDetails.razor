@@ -1,0 +1,30 @@
+﻿@page "/productdetails"
+@using FlowerCRM.Data
+@using System.Net.Http
+@using System.Net
+@using System.Net.Http.Json
+@inject HttpClient Http
+
+<h3>ProductDetails</h3>
+
+<input @bind=id placeholder="Id" />
+<button @onclick="BtnSearch_OnClicked">Search</button>
+
+@if (product == null)
+{
+    <p>Loading....</p>
+}
+else
+{
+    <p></p>
+}
+
+@code {
+    private int id;
+    private Product[] product;
+
+    private async void BtnSearch_OnClicked()
+    {
+        product = await Http.GetFromJsonAsync<Product[]>("api/Products/"+id);
+    }
+}
