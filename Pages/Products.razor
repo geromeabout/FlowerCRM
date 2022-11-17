@@ -1,0 +1,45 @@
+﻿@page "/products"
+@using System.Net.Http
+@using System.Net.Http.Json
+@inject HttpClient Http
+@using FlowerCRM.Data
+
+<h3>Products</h3>
+
+@if (products == null)
+{
+    <p>Loading ....</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product.ProductCode</td>
+                    <td>@product.ProductDescription</td>
+                    <td>@product.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<div>
+    <a href="addproduct" target="_self">Add a Product</a>
+</div>
+
+@code {
+    private Product[] products;
+    protected override async Task OnInitializedAsync()
+    {
+        products = await Http.GetFromJsonAsync<Product[]>("api/Products");
+    }
+}

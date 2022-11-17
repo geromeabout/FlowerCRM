@@ -1,0 +1,61 @@
+﻿@page "/addproduct"
+@using FlowerCRM.Data
+@using System.Net.Http
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Add a Product</h3>
+
+@if(categories == null)
+{
+    <p>Loading ....</p>
+}
+else
+{
+    <input @bind="productcode" placeholder="Product Code"/>
+    <input @bind="productdesc" placeholder="Product Description"/>
+    <select @bind="@selectedString" title="Select a Category">
+        @foreach (var category in categories)
+        {
+            <option value=@category.Id>@category.Name</option>
+        }
+    </select>
+    <input @bind="price" placeholder="0.0"/>
+    <button @onclick="BtnAddProduct_OnClicked">Add</button>
+}
+
+@code {
+    private string productcode;
+    private string productdesc;
+    private string price;
+    private Category[] categories;
+    string selectedString;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("api/Categories");
+    }
+
+    private async void BtnAddProduct_OnClicked()
+    {
+        var addproduct = new Product
+        {
+            ProductCode = productcode,
+            ProductDescription = productdesc,
+            Price = Convert.ToDouble(price),
+            CategoryId = Convert.ToInt16(selectedString),
+            ImageUrl = "nophoto.png"
+        };
+        var resp = await Http.PostAsJsonAsync("api/Products", addproduct);
+        if(resp.IsSuccessStatusCode)
+        {
+            Navigation.NavigateTo("products");
+        }
+    }
+    //void OnSelect(ChangeEventArgs e)
+    //{
+    //    selectedString = e.Value.ToString();
+    //    Console.WriteLine("Selected : " + selectedString);
+    //}
+}

@@ -1,0 +1,27 @@
+﻿@page "/addcategory"
+@using System.Net.Http.Json
+@using System.Threading.Tasks
+@inject HttpClient Http
+@using FlowerCRM.Data
+@inject NavigationManager Navigation
+
+<h3>Add a Category</h3>
+
+<p id="alert"></p>
+<input @bind="name" placeholder="Name" />
+<input @bind="description" placeholder="Description" />
+<button @onclick="AddCategory_OnClicked">Add</button>
+
+@code {
+    private string name;
+    private string description;
+    private async void AddCategory_OnClicked()
+    {
+        var addcate = new Category { Name = name, Description = description };
+        var resp = await Http.PostAsJsonAsync("api/Categories", addcate);
+        if(resp.IsSuccessStatusCode)
+        {
+            Navigation.NavigateTo("categories");
+        }
+    }
+}
