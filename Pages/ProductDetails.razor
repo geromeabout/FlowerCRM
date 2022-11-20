@@ -4,10 +4,11 @@
 @using System.Net
 @using System.Net.Http.Json
 @inject HttpClient Http
+@inject NavigationManager Navigate
 
-<h3>ProductDetails</h3>
+<h3>Product Details</h3>
 
-<input @bind=id placeholder="Id" />
+<input @bind=_code placeholder="Product Code" />
 <button @onclick="BtnSearch_OnClicked">Search</button>
 
 @if (product == null)
@@ -16,15 +17,33 @@
 }
 else
 {
-    <p></p>
+    <p>@product.ProductCode</p>
+    <p>@product.ProductDescription</p>
+    <p>@product.Price</p>
+    <p>@product.ImageUrl</p>
+    <p>@product.DateCreated</p>
+
+    <a href="editproduct/@product.Id">Edit</a>
+    <button @onclick="BtnDelete_OnClicked">Delete</button>
+
 }
 
 @code {
-    private int id;
-    private Product[] product;
+    private string _code;
+    private string id;
+    private Product product;
 
     private async void BtnSearch_OnClicked()
     {
-        product = await Http.GetFromJsonAsync<Product[]>("api/Products/"+id);
+        product = await Http.GetFromJsonAsync<Product>("api/Products/ViewProductByCode/"+_code);
+    }
+    private void BtnEdit_OnClicked()
+    {
+        //await Http.PutAsJsonAsync("api/Products/" + id, product);
+        Navigate.NavigateTo("editproduct/"+id);
+    }
+    private async void BtnDelete_OnClicked()
+    {
+        await Http.DeleteFromJsonAsync<Product>("api/Products/"+ id);
     }
 }

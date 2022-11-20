@@ -1,0 +1,57 @@
+﻿@page "/editproduct/{id}"
+@using System.Net.Http
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@using FlowerCRM.Data
+
+<h3>Edit Product</h3>
+
+@if (product == null)
+{
+    <p>Loading....</p>
+}
+else
+{
+    <input @bind=@product.ProductCode />
+    <input @bind=@product.ProductDescription />
+    <input @bind=@product.Price />
+    <select @bind="@selectedString" title="Select a Category">
+        @foreach (var category in categories)
+        {
+            <option value=@category.Id>@category.Name</option>
+        }
+    </select>
+
+
+    <button @onclick="BtnSave_OnClicked">Save</button>
+
+}
+
+@code {
+    private int _id;
+    private Product product;
+    private Category[]? categories;
+    string selectedString;
+
+    protected async void OnInitializedAsync(int id)
+    {
+        _id = id;
+        await GetCategories();
+        await GetProductDetails(_id);
+    }
+
+    async Task GetProductDetails(int id)
+    {
+        var product = await Http.GetFromJsonAsync<Product>("api/Products/" + id);
+    }
+
+    void BtnSave_OnClicked()
+    {
+
+    }
+    async Task GetCategories()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("api/Categories");
+    }
+}

@@ -29,13 +29,13 @@
     <AppXManifest Include="D:\Projects\Current\FlowerCRM\FlowerCRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-11-17T15:59:50.950</Modified>
+      <Modified>2022-11-20T16:20:54.113</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Projects\Current\FlowerCRM\FlowerCRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-11-17T15:59:49.804</Modified>
+      <Modified>2022-11-20T14:48:12.728</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projects\Current\FlowerCRM\FlowerCRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\FlowerCRM.runtimeconfig.json">
       <PackagePath>FlowerCRM.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projects\Current\FlowerCRM\FlowerCRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\FlowerCRM.dll">
       <PackagePath>FlowerCRM.dll</PackagePath>
-      <Modified>2022-11-17T15:59:48.230</Modified>
+      <Modified>2022-11-20T16:20:48.931</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projects\Current\FlowerCRM\FlowerCRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>FlowerCRM.exe</PackagePath>
-      <Modified>2022-11-17T15:59:48.242</Modified>
+      <Modified>2022-11-20T16:20:49.091</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\gyrum\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.0\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -975,7 +975,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projects\Current\FlowerCRM\FlowerCRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\FlowerCRM.deps.json">
       <PackagePath>FlowerCRM.deps.json</PackagePath>
-      <Modified>2022-11-17T15:59:50.660</Modified>
+      <Modified>2022-11-20T16:20:53.454</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.49\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>
