@@ -3,6 +3,7 @@
 @using System.Net.Http.Json
 @inject HttpClient Http
 @using FlowerCRM.Data
+@inject NavigationManager Navigate
 
 <h3>Products</h3>
 
@@ -30,7 +31,7 @@ else
                     <td>@product.ProductDescription</td>
                     <td>@product.Price</td>
                     <td><a href="editproduct/@product.Id">Edit</a></td>
-                    <td><button @onclick="() => BtnDelete_Onclicked(product.Id)"/></td>
+                    <td><button @onclick="() => BtnDelete_Onclicked(product.Id)">Delete</button></td>
                 </tr>
             }
         </tbody>
@@ -51,5 +52,6 @@ else
     private async Task BtnDelete_Onclicked(int Id)
     {
         await Http.DeleteFromJsonAsync<Product>("api/Products/"+Id);
+        Navigate.NavigateTo("products");
     }
 }

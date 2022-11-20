@@ -24,7 +24,7 @@ else
     <p>@product.DateCreated</p>
 
     <a href="editproduct/@product.Id">Edit</a>
-    <button @onclick="BtnDelete_OnClicked">Delete</button>
+    <button @onclick="() => BtnDelete_OnClicked(product.Id)">Delete</button>
 
 }
 
@@ -42,8 +42,8 @@ else
         //await Http.PutAsJsonAsync("api/Products/" + id, product);
         Navigate.NavigateTo("editproduct/"+id);
     }
-    private async void BtnDelete_OnClicked()
+    private async void BtnDelete_OnClicked(int Id)
     {
-        await Http.DeleteFromJsonAsync<Product>("api/Products/"+ id);
+        await Http.DeleteFromJsonAsync<Product>("api/Products/"+ Id);
     }
 }
