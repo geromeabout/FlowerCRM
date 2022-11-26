@@ -22,7 +22,7 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-        builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://172.20.255.237/") });
+        builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5000/") });
 
         return builder.Build();
 	}
